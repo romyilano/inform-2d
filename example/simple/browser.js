@@ -23,5 +23,5 @@ loadsvg('face.svg', function (err, svg) {
         }
         points.push(pts);
     }
-    code.value = toinform(points);
+    code.value = toinform(points, { name: 'face' });
 });
