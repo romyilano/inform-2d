@@ -28,8 +28,8 @@ loadsvg('face.svg', function (err, svg) {
         xangle: -168.80,
         yangle: -11.35,
         zangle: -67.97,
-        xmin: 1200, xscale: 1,
-        ymin: 0, yscale: 1,
-        zup: 100, zdown: 50
+        xmin: 1000, xmax: 1200,
+        ymin: -600, ymax: -400,
+        zup: 20, zdown: 12
     });
 });

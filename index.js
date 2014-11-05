@@ -11,11 +11,11 @@ module.exports = function (points, opts) {
     var ay = defined(opts.yangle, 0);
     var az = defined(opts.zangle, 0);
     
-    var zup = defined(opts.zup, 100);
-    var zdown = defined(opts.zdown, 50);
+    var zup = defined(opts.zup, 10);
+    var zdown = defined(opts.zdown, 5);
     
-    var vup = defined(opts.vup, 20);
-    var vdown = defined(opts.vdown, 5);
+    var vup = defined(opts.vup, 200);
+    var vdown = defined(opts.vdown, 50);
     
     var xmin = defined(opts.xmin, 0);
     var xmax = defined(opts.xmax, 100);
@@ -23,8 +23,8 @@ module.exports = function (points, opts) {
     var ymin = defined(opts.ymin, 0);
     var ymax = defined(opts.ymax, 100);
     
-    var xscale = defined(opts.xscale, 1);
-    var yscale = defined(opts.yscale, 1);
+    var pxmax = -Infinity, pxmin = Infinity;
+    var pymax = -Infinity, pymin = Infinity;
     
     var pos = [];
     for (var i = 0; i < points.length; i++) {
@@ -40,6 +40,10 @@ module.exports = function (points, opts) {
                 id: sprintf('C%03d', pos.length),
                 x: p[j][0], y: p[j][1], z: zdown
             });
+            pxmax = Math.max(pxmax, p[j][0]);
+            pxmin = Math.min(pxmin, p[j][0]);
+            pymax = Math.max(pymax, p[j][1]);
+            pymin = Math.min(pymin, p[j][1]);
         }
         pos.push({
             id: sprintf('C%03d', pos.length),
@@ -48,7 +52,10 @@ module.exports = function (points, opts) {
     }
     
     function shift (x, y) {
-        return [ x * xscale + xmin, y * yscale + ymin ];
+        return [
+            x * (pxmax - pxmin) / (xmax - xmin) + xmin,
+            y * (pymax - pymin) / (ymax - ymin) + ymin
+        ];
     }
     
     return [
