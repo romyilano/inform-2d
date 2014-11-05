@@ -25,11 +25,11 @@ loadsvg('substack.svg', function (err, svg) {
     }
     code.value = toinform(points, {
         name: 'face',
-        xangle: -168.80,
-        yangle: -11.35,
-        zangle: -67.97,
-        xmin: 1000, xmax: 1200,
-        ymin: -600, ymax: -400,
-        zup: 55, zdown: 45
+        xangle: -168.90,
+        yangle: -11.30,
+        zangle: -68.01,
+        xmin: 900, xmax: 1200,
+        ymin: -650, ymax: -350,
+        zup: 150.4, zdown: 140.4
     });
 });
