@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "watch": "watchify browser.js -o static/bundle.js -dv",
-    "build": "browserify browser.js | uglifyjs > static/bundle.js"
-  }
-}
