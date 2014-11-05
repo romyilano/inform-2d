@@ -1,12 +1,8 @@
-var linearize = require('svg-linearize');
-var loadsvg = require('load-svg');
-var parse = require('parse-svg-path');
 var toinform = require('../../');
 
 var code = document.querySelector('#code');
+code.value = toinform(
 
-loadsvg('substack.svg', function (err, svg) {
-    var nsvg = linearize(svg, { tolerance: 3 });
     document.body.insertBefore(nsvg, code);
     
     var paths = nsvg.querySelectorAll('path');
