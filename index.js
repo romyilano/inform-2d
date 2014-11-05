@@ -14,6 +14,9 @@ module.exports = function (points, opts) {
     var zup = defined(opts.zup, 10);
     var zdown = defined(opts.zdown, 5);
     
+    var vup = defined(opts.vup, 20);
+    var vdown = defined(opts.vdown, 5);
+    
     var pos = [];
     for (var i = 0; i < points.length; i++) {
         var p = points[i];
@@ -47,7 +50,13 @@ module.exports = function (points, opts) {
         }).join('\r\n'),
         '//INST',
         '///DATE ' + strftime('%Y/%m/%d %H:%M'),
-        '///ATTR',
+        '///ATTR 0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0',
+        '///FRAME BASE',
+        'NOP',
+        pos.map(function (p) {
+            var v = p.z === zup ? vup : vdown;
+            return 'MOVL ' + p.id + ' V=' + v + ' CONT';
+        }).join('\r\n'),
         'END'
     ].join('\r\n');
 };
