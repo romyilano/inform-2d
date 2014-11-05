@@ -5,7 +5,7 @@ var toinform = require('../../');
 
 var code = document.querySelector('#code');
 
-loadsvg('face.svg', function (err, svg) {
+loadsvg('substack.svg', function (err, svg) {
     var nsvg = linearize(svg, { tolerance: 3 });
     document.body.insertBefore(nsvg, code);
     
@@ -30,6 +30,6 @@ loadsvg('face.svg', function (err, svg) {
         zangle: -67.97,
         xmin: 1000, xmax: 1200,
         ymin: -600, ymax: -400,
-        zup: 20, zdown: 12
+        zup: 55, zdown: 45
     });
 });

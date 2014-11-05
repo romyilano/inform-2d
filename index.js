@@ -57,6 +57,10 @@ module.exports = function (points, opts) {
             y * (pymax - pymin) / (ymax - ymin) + ymin
         ];
     }
+    var commands = pos.map(function (p) {
+        var v = p.z === zup ? vup : vdown;
+        return 'MOVL ' + p.id + ' V=' + v + ' CONT';
+    }).join('\r\n');
     
     return [
         '/JOB',
@@ -76,10 +80,11 @@ module.exports = function (points, opts) {
         '///ATTR 0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0',
         '///FRAME BASE',
         'NOP',
-        pos.map(function (p) {
-            var v = p.z === zup ? vup : vdown;
-            return 'MOVL ' + p.id + ' V=' + v + ' CONT';
-        }).join('\r\n'),
+        '*1',
+        commands[0],
+        'PAUSE',
+        commands.slice(1).join('\r\n'),
+        'JUMP *1',
         'END'
     ].join('\r\n');
 };
