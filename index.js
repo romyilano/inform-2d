@@ -60,7 +60,7 @@ module.exports = function (points, opts) {
     var commands = pos.map(function (p) {
         var v = p.z === zup ? vup : vdown;
         return 'MOVL ' + p.id + ' V=' + v + ' CONT';
-    }).join('\r\n');
+    });
     
     return [
         '/JOB',
