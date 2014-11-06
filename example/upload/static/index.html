@@ -14,7 +14,7 @@
       }
       .panes {
         position: absolute;
-        top: 40px;
+        top: 50px;
         left: 0px;
         right: 0px;
         width: 100%;
@@ -40,9 +40,25 @@
     </style>
   </head>
   <body>
-    <div>
-      <input id="upload" type="file">
-    </div>
+    <form>
+      <div>
+        <input id="upload" type="file">
+        name=<input type="text" name="name" size=6>
+        xangle=<input type="text" id="xangle" value="0" size=4>
+        yangle=<input type="text" id="yangle" value="0" size=4>
+        zangle=<input type="text" id="zangle" value="0" size=4>
+      </div>
+      <div style="margin-left: 50px">
+        xmin=<input type="text" id="xmin" value="-100" size=4>
+        xmax=<input type="text" id="xmax" value="100" size=4>
+        ymin=<input type="text" id="ymin" value="-100" size=4>
+        ymax=<input type="text" id="ymax" value="100" size=4>
+        zup=<input type="text" id="zup" value="0" size=3>
+        zdown=<input type="text" id="zdown" value="10" size=3>
+        vup=<input type="text" id="vup" value="200" size=3>
+        vdown=<input type="text" id="vdown" value="50" size=3>
+      </div>
+    </form>
     <div class="panes">
       <div class="left pane">
         <div id="picture"></div>

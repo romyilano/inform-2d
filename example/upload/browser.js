@@ -11,37 +11,57 @@ var code = document.querySelector('#code');
 var picture = document.querySelector('#picture');
 var input = document.querySelector('#upload');
 
+var nsvg;
 upload(input, { type: 'text' }, function (err, results) {
     var svg = element(results[0].target.result);
-    var nsvg = wireframe(linearize(svg, { tolerance: 3 }));
-    
-    code.value = toinform(segments(nsvg), {
-        name: 'face',
-        xangle: -168.90,
-        yangle: -11.30,
-        zangle: -68.01,
-        xmin: 900, xmax: 1200,
-        ymin: -650, ymax: -350,
-        zup: 150.4, zdown: 140.4
-    });
-    
+    nsvg = wireframe(linearize(svg, { tolerance: 3 }));
     picture.innerHTML = '';
     picture.appendChild(nsvg);
     fit(nsvg);
+    compute();
+});
+
+function compute () {
+    if (!nsvg) return;
+    code.value = toinform(segments(nsvg), {
+        xangle: param('#xangle'),
+        yangle: param('#yangle'),
+        zangle: param('#zangle'),
+        xmin: param('#xmin'),
+        xmax: param('#xmax'),
+        ymin: param('#ymin'),
+        ymax: param('#ymax'),
+        zup: param('#zup'),
+        zdown: param('#zdown'),
+        vup: param('#vup'),
+        vdown: param('#vdown')
+    });
+    
+    function param (sel) { return Number(document.querySelector(sel).value) }
+}
+
+var params = [
+    '#xangle', '#yangle', '#zangle', '#xmin', '#xmax', '#ymin', '#ymax', '#zup',
+    '#zdown', '#vup', '#vdown'
+];
+params.forEach(function (sel) {
+    var elem = document.querySelector(sel);
+    elem.addEventListener('change', compute);
+    elem.addEventListener('keydown', compute);
 });
 
 function fit (svg) {
     var bbox = bounds(svg);
     var sbox = svg.getBoundingClientRect();
     
-    var tx = (sbox.left - bbox.left) / 2;
-    var ty = (sbox.top - bbox.top) / 2;
+    var tx = sbox.left - bbox.left;
+    var ty = sbox.top - bbox.top;
     var w = bbox.right - bbox.left;
     var h = bbox.bottom - bbox.top;
     
     var wh = Math.max(w, h);
     var sx = sbox.width / wh;
-    var sy = sbox.height / hh;
+    var sy = sbox.height / wh;
     
     var g = createElement('g', {
         transform: 'scale(' + sx + ' ' + sy + ')'
