@@ -1,0 +1,39 @@
+{
+  "name": "inform-2d",
+  "version": "1.0.0",
+  "description": "convert vector paths to MOTOMAN INFORM (.JBI) files",
+  "main": "index.js",
+  "dependencies": {
+    "defined": "~0.0.0",
+    "sprintf": "~0.1.4",
+    "strftime": "~0.8.2"
+  },
+  "devDependencies": {
+    "tape": "^3.0.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/inform-2d.git"
+  },
+  "homepage": "https://github.com/substack/inform-2d",
+  "keywords": [
+    "motoman",
+    "browser",
+    "inform",
+    "jbi",
+    "robot",
+    "arm",
+    "industrial",
+    "robotics",
+    "svg"
+  ],
+  "author": {
+    "name": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net"
+  },
+  "license": "MIT"
+}

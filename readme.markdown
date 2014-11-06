@@ -8,6 +8,8 @@ This file format is used on big industrial robot arms, like the one at
 
 [Watch the algorithm in action.](https://www.youtube.com/watch?v=6w0WFo8kTJ0)
 
+[online svg to inform converter](http://substack.neocities.org/svg2inform.html)
+
 # example
 
 ``` js
