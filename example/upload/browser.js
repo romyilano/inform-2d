@@ -4,6 +4,14 @@ var createElement = require('svg-create-element');
 
 var element = require('element');
 var upload = require('upload-element');
+var slideways = require('slideways');
+
+var slider = slideways({ min: 0, max: 14, init: 3 });
+slider.on('value', function (value) {
+    slider.value = value;
+    generateImage();
+});
+slider.appendTo('#slider');
 
 var toinform = require('../../');
 
@@ -11,15 +19,21 @@ var code = document.querySelector('#code');
 var picture = document.querySelector('#picture');
 var input = document.querySelector('#upload');
 
-var nsvg;
+var nsvg, svg;
 upload(input, { type: 'text' }, function (err, results) {
-    var svg = element(results[0].target.result);
-    nsvg = wireframe(linearize(svg, { tolerance: 3 }));
+    svg = element(results[0].target.result);
+    generateImage();
+});
+
+function generateImage () {
+    if (!svg) return;
+console.log(slider.value); 
+    nsvg = wireframe(linearize(svg, { tolerance: slider.value }));
     picture.innerHTML = '';
     picture.appendChild(nsvg);
     fit(nsvg);
     compute();
-});
+}
 
 function compute () {
     if (!nsvg) return;

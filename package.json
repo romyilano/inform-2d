@@ -9,6 +9,7 @@
     "strftime": "~0.8.2"
   },
   "devDependencies": {
+    "slideways": "0.0.3",
     "tape": "^3.0.0"
   },
   "scripts": {
