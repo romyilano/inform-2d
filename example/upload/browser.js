@@ -44,6 +44,7 @@ function generateImage () {
 function compute () {
     if (!nsvg) return;
     code.value = toinform(segments(nsvg), {
+        name: document.querySelector('#name').value,
         xangle: param('#xangle'),
         yangle: param('#yangle'),
         zangle: param('#zangle'),
@@ -62,12 +63,11 @@ function compute () {
 
 var params = [
     '#xangle', '#yangle', '#zangle', '#xmin', '#xmax', '#ymin', '#ymax', '#zup',
-    '#zdown', '#vup', '#vdown'
+    '#zdown', '#vup', '#vdown', '#name'
 ];
 params.forEach(function (sel) {
     var elem = document.querySelector(sel);
-    elem.addEventListener('change', compute);
-    elem.addEventListener('keydown', compute);
+    elem.addEventListener('keyup', compute);
 });
 
 function fit (svg) {
