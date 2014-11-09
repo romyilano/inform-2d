@@ -47,6 +47,10 @@
       #slider {
         display: inline-block;
       }
+      #slider-label {
+        display: inline-block;
+        vertical-align: top;
+      }
     </style>
   </head>
   <body>
@@ -64,37 +68,38 @@
           </tr>
           <tr>
             <th>resolution</th>
-            <td colspan=6><div id="slider"></div></td>
+            <td colspan=6>
+              <div id="slider"></div>
+              <span id="slider-label"></span>
+            </td>
           </tr>
           <tr>
             <th>xmin</th>
             <td><input type="text" id="xmin" value="-100" size=4></td>
-            <th>xmax</th>
-            <td><input type="text" id="xmax" value="100" size=4></td>
-            <th>xangle</th>
-            <td><input type="text" id="xangle" value="0" size=4></td>
-          </tr>
-          <tr>
             <th>ymin</th>
             <td><input type="text" id="ymin" value="-100" size=4></td>
-            <th>ymax</th>
-            <td><input type="text" id="ymax" value="100" size=4></td>
-            <th>yangle</th>
-            <td><input type="text" id="yangle" value="0" size=4></td>
-          </tr>
-          <tr>
             <th>zup</th>
             <td><input type="text" id="zup" value="0" size=3></td>
-            <th>zdown</th>
-            <td><input type="text" id="zdown" value="10" size=3></td>
-            <th>zangle</th>
-            <td><input type="text" id="zangle" value="0" size=4></td>
-          </tr>
-          <tr>
             <th>vup</th>
             <td><input type="text" id="vup" value="200" size=3></td>
+          </tr>
+          <tr>
+            <th>xmax</th>
+            <td><input type="text" id="xmax" value="100" size=4></td>
+            <th>ymax</th>
+            <td><input type="text" id="ymax" value="100" size=4></td>
+            <th>zdown</th>
+            <td><input type="text" id="zdown" value="10" size=3></td>
             <th>vdown</th>
             <td><input type="text" id="vdown" value="50" size=3></td>
+          </tr>
+          <tr>
+            <th>xangle</th>
+            <td><input type="text" id="xangle" value="0" size=4></td>
+            <th>yangle</th>
+            <td><input type="text" id="yangle" value="0" size=4></td>
+            <th>zangle</th>
+            <td><input type="text" id="zangle" value="0" size=4></td>
           </tr>
         </table>
         <div id="code-outer">

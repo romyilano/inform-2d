@@ -10,6 +10,8 @@ var slider = slideways({ min: 0, max: 14, init: 3 });
 var timeout = null;;
 slider.on('value', function (value) {
     slider.value = value;
+    var label = document.querySelector('#slider-label');
+    label.textContent = '(' + value + ')';
     if (timeout) return;
     timeout = setTimeout(function () {
         timeout = null;
@@ -32,7 +34,6 @@ upload(input, { type: 'text' }, function (err, results) {
 
 function generateImage () {
     if (!svg) return;
-console.log(slider.value); 
     nsvg = wireframe(linearize(svg, { tolerance: slider.value }));
     picture.innerHTML = '';
     picture.appendChild(nsvg);
