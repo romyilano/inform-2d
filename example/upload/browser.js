@@ -7,9 +7,14 @@ var upload = require('upload-element');
 var slideways = require('slideways');
 
 var slider = slideways({ min: 0, max: 14, init: 3 });
+var timeout = null;;
 slider.on('value', function (value) {
     slider.value = value;
-    generateImage();
+    if (timeout) return;
+    timeout = setTimeout(function () {
+        timeout = null;
+        generateImage();
+    }, 250);
 });
 slider.appendTo('#slider');
 
